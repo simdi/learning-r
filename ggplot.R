@@ -64,5 +64,46 @@ house %>% select(c(-1)) -> house
 # Barplot
 # ggplot(data = house, aes(x = waterfront, fill = air_cond)) +
 #   geom_bar(position = "fill")
-ggplot(data = house, aes(x = waterfront, fill = `sewer`)) +
-  geom_bar(position = "fill")
+# ggplot(data = house, aes(x = waterfront, fill = `sewer`)) +
+#   geom_bar(position = "fill")
+
+# Frequency polygon
+# ggplot(data = house, aes(x = price)) +
+#   geom_freqpoly()
+# ggplot(data = house, aes(x = price)) +
+#   geom_freqpoly(bins = 60)
+# ggplot(data = house, aes(x = price, col = air_cond)) +
+#   geom_freqpoly(bins = 60)
+
+# Boxplot
+# ggplot(data = house, aes(x = factor(rooms), y = price)) +
+#   geom_boxplot()
+# ggplot(data = house, aes(x = factor(rooms), y = price, fill = factor(rooms))) +
+#   geom_boxplot()
+# ggplot(data = house, aes(x = factor(rooms), y = price, fill = air_cond)) +
+#   geom_boxplot()
+
+# Smoothed line
+# ggplot(data = house, aes(x = living_area, y = price)) +
+#   geom_smooth()
+# ggplot(data = house, aes(x = living_area, y = price, col = heat)) +
+#   geom_smooth(se = F)
+# ggplot(data = house, aes(x = living_area, y = price)) +
+#   geom_point() +
+#   geom_smooth(method = "lm", se = F)
+# ggplot(data = house, aes(x = living_area, y = price, col = air_cond)) +
+#   geom_point() +
+#   geom_smooth(method = "lm", se = F)
+# ggplot(data = house, aes(x = living_area, y = price, col = air_cond)) +
+#   geom_point() +
+#   geom_smooth(method = "lm", se = F) +
+#   facet_grid(heat ~ air_cond)
+
+
+# Theme customization
+ggplot(data = house, aes(x = factor(rooms), y = price, fill = factor(rooms))) +
+  geom_boxplot() -> obj1
+obj1 + labs(title = "Price w.r.t Rooms", x = "Rooms", y = "Rooms") -> obj2
+obj2 + theme(panel.background = element_rect(fill = "palegreen")) -> obj3
+obj3 + theme(plot.title = element_text(hjust = 0.5, face = "bold", color = "cadetblue")) -> obj4
+obj4 + scale_y_continuous(labels = scales::dollar)
