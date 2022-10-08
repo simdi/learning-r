@@ -39,6 +39,8 @@ library(ggplot2)
 #   ggtitle("Sepal Length vs Petal Length") +
 #   xlab("Petal Length") +
 #   ylab("Sepal Length")
+# ggplot(data = house, aes(y = price, x = living_area, col = factor(rooms))) +
+#   geom_point()
 
 
 # House dataset
@@ -47,8 +49,11 @@ read.csv("~/Desktop/projects/r-projects/learning-r/housesrate.csv") -> house
 # View(house)
 library(dplyr)
 house %>% select(c(-1)) -> house
+# Change the air_cond value from 0 to No and 1 to Yes
+house %>% mutate(air_cond = ifelse(air_cond == 1, "Yes", "No")) -> house
 # View(house)
 # Histogram
+# Uni-variate analysis of price
 # ggplot(data = house, aes(x = price)) +
 #   geom_histogram()
 # ggplot(data = house, aes(x = price)) +
@@ -64,8 +69,8 @@ house %>% select(c(-1)) -> house
 # Barplot
 # ggplot(data = house, aes(x = waterfront, fill = air_cond)) +
 #   geom_bar(position = "fill")
-# ggplot(data = house, aes(x = waterfront, fill = `sewer`)) +
-#   geom_bar(position = "fill")
+# ggplot(data = house, aes(x = air_cond)) +
+#   geom_bar(fill = "orange")
 
 # Frequency polygon
 # ggplot(data = house, aes(x = price)) +
