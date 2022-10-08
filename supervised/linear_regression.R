@@ -1,9 +1,10 @@
 mtcars <- read.csv("https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv")
 # View(mtcars)
+# The caTools package is used to split the data into training and test sets
 library(caTools)
 
 # split data into training and test sets
-my_split <- sample.split(mtcars$mpg, SplitRatio = 0.7)
+my_split <- sample.split(mtcars$mpg, SplitRatio = 0.65)
 train <- subset(mtcars, my_split == TRUE)
 test <- subset(mtcars, my_split == FALSE)
 nrow(train)
