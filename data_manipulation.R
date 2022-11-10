@@ -1,10 +1,10 @@
 # Data Manipulation
-# library(dplyr)
+library(dplyr)
 
 # Load the house dataset
 read.csv("~/Desktop/projects/r-projects/learning-r/housesrate.csv") -> house
 iris <- read.csv("~/Desktop/projects/r-projects/learning-r/iris.csv")
-# View(house)
+ View(house)
 
 # Select only the first two columns
 # using the pipe operator
@@ -52,7 +52,7 @@ house11 <- arrange(house, desc(price))
 # Summarise the data frame
 # NOTE: The summarise() function is used to summarise the data frame.
 house12 <- summarise(house, mean_price = mean(price))
-View(house12)
+# View(house12)
 
 # Group_by
 # Group the data frame
@@ -72,3 +72,9 @@ house15 <- join(house, house14, by = "rooms")
 # NOTE: The sample() function is used to sample the data frame.
 house16 <- sample(house, 10)
 # View(house16)
+
+# To check the structure of a dataset
+str(house)
+
+# Calculate the sum of the price column removing any "na" value
+sum(house['price'], na.rm = T)
